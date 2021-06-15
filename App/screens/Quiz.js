@@ -1,25 +1,26 @@
 import React from "react";
-import { View, StyleSheet, StatusBar, Text, SafeAreaView } from "react-native";
+import { View, StyleSheet, StatusBar, Text, SafeAreaView, Image } from "react-native";
 
 import { Button, ButtonContainer } from "../components/Button";
 import { Alert } from "../components/Alert";
+import { images } from "../data/space"
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#36B1F0",
     flex: 1,
-    paddingHorizontal: 20
+    paddingHorizontal: 10
   },
   text: {
     color: "#fff",
-    fontSize: 25,
+    fontSize: 22,
     textAlign: "center",
     letterSpacing: -0.02,
     fontWeight: "600"
   },
   safearea: {
     flex: 1,
-    marginTop: 100,
+    // marginTop: 100,
     justifyContent: "space-between"
   }
 });
@@ -72,6 +73,7 @@ class Quiz extends React.Component {
     const questions = this.props.navigation.getParam("questions", []);
     const question = questions[this.state.activeQuestionIndex];
 
+
     return (
       <View
         style={[
@@ -82,6 +84,14 @@ class Quiz extends React.Component {
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safearea}>
           <View>
+            <Image
+              style={{
+                resizeMode: "contain",
+                height: 180,
+                width: "100%",
+              }}
+              source={images.test800[question.id]}
+            />
             <Text style={styles.text}>{question.question}</Text>
 
             <ButtonContainer>
